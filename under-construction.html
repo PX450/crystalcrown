@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Under Construction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bubble {
+            will-change: transform;
+        }
+        .gear, .gear2 {
+            will-change: transform;
+        }
+        .construction-wrapper {
+            text-align: center;
+            padding: 40px 24px;
+            background: rgba(34,34,34,0.92);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            position: relative;
+            overflow: hidden;
+        }
+        .construction-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00c3ff;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+        }
+        .construction-text {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-bottom: 32px;
+        }
+        .gear {
+            width: 80px;
+            height: 80px;
+            margin: 0 12px;
+            animation: bounce 1.2s ease-in-out infinite;
+            stroke: #00c3ff;
+        }
+        .gear2 {
+            width: 60px;
+            height: 60px;
+            animation: bounce2 1.5s ease-in-out infinite;
+            stroke: #ffd700;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-18px); }
+        }
+        @keyframes bounce2 {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .color-bubbles {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+        }
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.5; }
+        }
+        .bubble1 { background: #ff6f61; width: 80px; height: 80px; left: 10%; top: 10%; animation-delay: 0s; }
+        .bubble1 { background: #00c3ff; width: 80px; height: 80px; left: 10%; top: 10%; animation-delay: 0s; }
+        .bubble2 { background: #ff0080; width: 60px; height: 60px; left: 80%; top: 20%; animation-delay: 2s; }
+        .bubble3 { background: #ffd700; width: 100px; height: 100px; left: 50%; top: 80%; animation-delay: 1s; }
+        .bubble4 { background: #7f53ac; width: 70px; height: 70px; left: 20%; top: 70%; animation-delay: 3s; }
+        .bubble5 { background: #00ffb0; width: 50px; height: 50px; left: 70%; top: 60%; animation-delay: 4s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-40px) scale(1.1); }
+        }
+        .back-btn {
+            margin-top: 32px;
+            padding: 10px 32px;
+            border-radius: 8px;
+            background: #00c3ff;
+            color: #232526;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            box-shadow: 0 2px 8px rgba(255,111,97,0.15);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .back-btn:hover {
+            background: #ff0080;
+            color: #fff;
+        }
+    </style>
+</head>
+<script>
+    // Mouse interactive bubbles and gears
+    document.addEventListener('mousemove', function(e) {
+        const bubbles = document.querySelectorAll('.bubble');
+        const gears = document.querySelectorAll('.gear, .gear2');
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        const x = e.clientX / w - 0.5;
+        const y = e.clientY / h - 0.5;
+        bubbles.forEach((bubble, i) => {
+            const factor = (i + 1) * 10;
+            bubble.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+        });
+        gears.forEach((gear, i) => {
+            const base = i === 0 ? 0 : 0;
+            gear.style.transform = `rotate(${base + x * 30 + y * 30}deg)`;
+        });
+    });
+</script>
+</head>
+<body>
+    <div class="construction-wrapper">
+        <div class="color-bubbles">
+            <div class="bubble bubble1"></div>
+            <div class="bubble bubble2"></div>
+            <div class="bubble bubble3"></div>
+            <div class="bubble bubble4"></div>
+            <div class="bubble bubble5"></div>
+        </div>
+        <div>
+            <svg class="gear" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="40" stroke="#ff6f61" stroke-width="8"/>
+                <path d="M50 10 L50 30" stroke="#ff6f61" stroke-width="8"/>
+                <path d="M50 90 L50 70" stroke="#ff6f61" stroke-width="8"/>
+                <path d="M10 50 L30 50" stroke="#ff6f61" stroke-width="8"/>
+                <path d="M90 50 L70 50" stroke="#ff6f61" stroke-width="8"/>
+                <path d="M25 25 L40 40" stroke="#ff6f61" stroke-width="8"/>
+                <path d="M75 75 L60 60" stroke="#ff6f61" stroke-width="8"/>
+                <path d="M25 75 L40 60" stroke="#ff6f61" stroke-width="8"/>
+                <path d="M75 25 L60 40" stroke="#ff6f61" stroke-width="8"/>
+            </svg>
+            <svg class="gear gear2" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="30" stroke="#ffd700" stroke-width="6"/>
+                <path d="M50 20 L50 35" stroke="#ffd700" stroke-width="6"/>
+                <path d="M50 80 L50 65" stroke="#ffd700" stroke-width="6"/>
+                <path d="M20 50 L35 50" stroke="#ffd700" stroke-width="6"/>
+                <path d="M80 50 L65 50" stroke="#ffd700" stroke-width="6"/>
+            </svg>
+        </div>
+        <div class="construction-title">Website Under Construction</div>
+        <div class="construction-text">We're working hard to bring you a beautiful new experience.<br>Check back soon for updates!</div>
+        <button class="back-btn" onclick="window.location.href='diverter.html'">Back to Diverter</button>
+    </div>
+</body>
+</html>
